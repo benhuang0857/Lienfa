@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('number');
             $table->string('ch_name');
-            $table->string('en_name');
+            $table->string('en_name')->nullable();
             $table->string('image_path')->nullable();
             $table->integer('sort')->default(0);
             $table->boolean('status')->default(false);
