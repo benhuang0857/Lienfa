@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('en_name')->nullable();
             $table->string('brief_name')->nullable();
             $table->string('local_name')->nullable();
-            $table->string('tel_area_number')->nullable();
             $table->boolean('is_capital')->default(false);
             $table->integer('sort')->default(0);
             $table->boolean('status')->default(false);

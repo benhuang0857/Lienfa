@@ -14,10 +14,9 @@ return new class extends Migration
         Schema::create('slideshows', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->string('image_path');
-            $table->string('work_path');
-            $table->date('expiration_start')->default('1900-01-01');
-            $table->date('expiration_end')->default('1900-01-01');
+            $table->string('work_path'); //作用的頁面
+            $table->date('expiration_start')->nullable();
+            $table->date('expiration_end')->nullable();
             $table->integer('sort')->default(0);
             $table->boolean('status')->default(true);
             $table->timestamps();

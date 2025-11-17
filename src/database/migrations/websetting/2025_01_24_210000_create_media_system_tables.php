@@ -34,13 +34,13 @@ return new class extends Migration
         Schema::create('mediable', function (Blueprint $table) {
             $table->id();
             $table->foreignId('media_id')->constrained('media')->onDelete('cascade');
-            $table->morphs('mediable');               // mediable_type + mediable_id
+            $table->morphs('mediable');               // mediable_type + mediable_id (已自動建立索引)
             $table->string('collection')->default('default'); // 圖片分類: main, gallery, thumbnail, icon
             $table->integer('sort')->default(0);      // 排序
             $table->timestamps();
 
             // 索引
-            $table->index(['mediable_type', 'mediable_id']);
+            // morphs() 已自動建立 mediable_type 和 mediable_id 的索引，不需要重複建立
             $table->index('collection');
 
             // 唯一約束：同一實體的同一集合中，同一媒體只能出現一次
