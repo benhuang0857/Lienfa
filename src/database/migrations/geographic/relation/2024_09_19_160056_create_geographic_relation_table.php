@@ -9,13 +9,16 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up(): void //定義GEO資訊彼此之間的關聯
     {
         Schema::create('continent_groupcountry_relation', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('pid')->default(-1);
             $table->integer('cid')->default(-1);
             $table->timestamps();
+
+            $table->index(['pid', 'cid']);
+            $table->unique(['pid', 'cid']);
         });
 
         Schema::create('continent_country_relation', function (Blueprint $table) {
@@ -23,6 +26,9 @@ return new class extends Migration
             $table->integer('pid')->default(-1);
             $table->integer('cid')->default(-1);
             $table->timestamps();
+
+            $table->index(['pid', 'cid']);
+            $table->unique(['pid', 'cid']);
         });
 
         Schema::create('groupcountry_country_relation', function (Blueprint $table) {
@@ -30,6 +36,9 @@ return new class extends Migration
             $table->integer('pid')->default(-1);
             $table->integer('cid')->default(-1);
             $table->timestamps();
+
+            $table->index(['pid', 'cid']);
+            $table->unique(['pid', 'cid']);
         });
 
         Schema::create('country_groupprovince_relation', function (Blueprint $table) {
@@ -37,6 +46,9 @@ return new class extends Migration
             $table->integer('pid')->default(-1);
             $table->integer('cid')->default(-1);
             $table->timestamps();
+
+            $table->index(['pid', 'cid']);
+            $table->unique(['pid', 'cid']);
         });
 
         Schema::create('country_province_relation', function (Blueprint $table) {
@@ -44,6 +56,9 @@ return new class extends Migration
             $table->integer('pid')->default(-1);
             $table->integer('cid')->default(-1);
             $table->timestamps();
+
+            $table->index(['pid', 'cid']);
+            $table->unique(['pid', 'cid']);
         });
 
         Schema::create('country_city_relation', function (Blueprint $table) {
@@ -51,6 +66,9 @@ return new class extends Migration
             $table->integer('pid')->default(-1);
             $table->integer('cid')->default(-1);
             $table->timestamps();
+
+            $table->index(['pid', 'cid']);
+            $table->unique(['pid', 'cid']);
         });
 
         Schema::create('groupprovince_province_relation', function (Blueprint $table) {
@@ -58,6 +76,9 @@ return new class extends Migration
             $table->integer('pid')->default(-1);
             $table->integer('cid')->default(-1);
             $table->timestamps();
+
+            $table->index(['pid', 'cid']);
+            $table->unique(['pid', 'cid']);
         });
 
         Schema::create('groupprovince_city_relation', function (Blueprint $table) {
@@ -65,6 +86,9 @@ return new class extends Migration
             $table->integer('pid')->default(-1);
             $table->integer('cid')->default(-1);
             $table->timestamps();
+
+            $table->index(['pid', 'cid']);
+            $table->unique(['pid', 'cid']);
         });
 
         Schema::create('province_city_relation', function (Blueprint $table) {
@@ -72,6 +96,9 @@ return new class extends Migration
             $table->integer('pid')->default(-1);
             $table->integer('cid')->default(-1);
             $table->timestamps();
+
+            $table->index(['pid', 'cid']);
+            $table->unique(['pid', 'cid']);
         });
     }
 

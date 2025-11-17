@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('continent', function (Blueprint $table) {
+        Schema::create('continent', function (Blueprint $table) { //洲
             $table->increments('id');
-            $table->string('number');
-            $table->string('ch_name');
+            $table->string('code')->unique();
+            $table->string('ch_name')->nullable();
             $table->string('en_name')->nullable();
-            $table->string('image_path')->nullable();
+            $table->string('brief_name')->nullable();
+            $table->string('local_name')->nullable();
             $table->integer('sort')->default(0);
             $table->boolean('status')->default(false);
             $table->timestamps();

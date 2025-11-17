@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('city', function (Blueprint $table) {
+        Schema::create('city', function (Blueprint $table) { //城市
             $table->id();
-            $table->string('number');
-            $table->string('ch_name');
+            $table->string('code')->unique();
+            $table->string('ch_name')->nullable();
             $table->string('en_name')->nullable();
+            $table->string('brief_name')->nullable();
             $table->string('local_name')->nullable();
             $table->string('tel_area_number')->nullable();
             $table->boolean('is_capital')->default(false);
-            $table->string('image_path')->nullable();
             $table->integer('sort')->default(0);
             $table->boolean('status')->default(false);
             $table->timestamps();
