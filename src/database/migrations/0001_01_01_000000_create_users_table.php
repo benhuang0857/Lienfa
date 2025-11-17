@@ -10,12 +10,29 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create("users", function (Blueprint $table) {
+        Schema::create("users", function (Blueprint $table) { //用戶
             $table->id();
-            $table->string("name");
             $table->string("email")->unique();
             $table->timestamp("email_verified_at")->nullable();
             $table->string("password");
+
+            // Additional
+            $table->string("code")->nullable()->unique(); //工號
+            $table->string("ch_name")->nullable();
+            $table->string("en_name")->nullable();
+            $table->string('nick_name')->nullable();
+            $table->string('avatar')->nullable();
+            $table->string('gender')->default('male');
+            $table->integer('company_id')->nullable();
+            $table->string('mobile')->nullable()->unique();
+            $table->timestamp("mobile_verified_at")->nullable();
+            $table->string('line')->nullable()->nullable();
+            $table->timestamp("line_verified_at")->nullable();
+            $table->integer('role_id')->default(0); //0 mean default role
+            $table->string('note')->nullable();
+            $table->integer('sort')->default(0);
+            $table->string('status')->default('active');
+
             $table->rememberToken();
             $table->timestamps();
         });
